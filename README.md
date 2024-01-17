@@ -7,15 +7,15 @@
    !git clone https://github.com/projan-shakya/Multi-Speaker-Neural-Voice-Cloning-in-Nepali-Language.git
 3. ```python
    import os
-   os.chdir('tacotron2')
+   os.chdir('Multi-Speaker-Neural-Voice-Cloning-in-Nepali-Language')
    !git submodule init
    !git submodule update
-   pip install -q unidecode tensorboardX
-   pip install librosa==0.9.2
+   !pip install -q unidecode tensorboardX
+   !pip install librosa==0.9.2
 
 4. Upload wav file on drive then
    ```python
-   !cp -r /content/drive/MyDrive/wav.zip /content/tacotron2
+   !cp -r /content/drive/MyDrive/wav.zip /content/Multi-Speaker-Neural-Voice-Cloning-in-Nepali-Language
 6. ```python
    !unzip wav.zip
 
