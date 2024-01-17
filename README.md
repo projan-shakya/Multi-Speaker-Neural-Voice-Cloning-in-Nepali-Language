@@ -17,7 +17,7 @@
    ```python
    !cp -r /content/drive/MyDrive/wav.zip /content/tacotron2```
 6. ```python
-   !unzip wav.zip```
+   !unzip wav.zip
 
 8.  To train type this code **CAREFUL ON THE FILEPATH HERE**
    ```python
