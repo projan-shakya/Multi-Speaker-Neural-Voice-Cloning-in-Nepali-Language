@@ -11,11 +11,11 @@
    !git submodule init
    !git submodule update
    pip install -q unidecode tensorboardX
-   pip install librosa==0.9.2```
+   pip install librosa==0.9.2
 
 4. Upload wav file on drive then
    ```python
-   !cp -r /content/drive/MyDrive/wav.zip /content/tacotron2```
+   !cp -r /content/drive/MyDrive/wav.zip /content/tacotron2
 6. ```python
    !unzip wav.zip
 
