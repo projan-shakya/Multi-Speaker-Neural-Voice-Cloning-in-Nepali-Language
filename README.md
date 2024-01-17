@@ -19,6 +19,6 @@
 6. ```python
    !unzip wav.zip```
 
-8.  To train type this code
+8.  To train type this code **CAREFUL ON THE FILEPATH HERE**
    ```python
 !python train.py --output_directory=<drivelink> --log_directory=<drivelink> -c <last_checkpointfile> --warm_start```
