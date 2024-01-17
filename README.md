@@ -4,7 +4,7 @@
 ## Step-wise Working 
 
 1. ```python
-   !git clone https://github.com/projan-shakya/Multi-Speaker-Neural-Voice-Cloning-in-Nepali-Language.git```
+   !git clone https://github.com/projan-shakya/Multi-Speaker-Neural-Voice-Cloning-in-Nepali-Language.git
 3. ```python
    import os
    os.chdir('tacotron2')
