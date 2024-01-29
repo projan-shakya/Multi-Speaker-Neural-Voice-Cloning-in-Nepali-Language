@@ -16,6 +16,9 @@ from loss_function import Tacotron2Loss
 from logger import Tacotron2Logger
 from hparams import create_hparams
 
+from torch.utils.tensorboard import SummaryWriter
+
+writer = SummaryWriter("/content/drive/MyDrive/test_run")
 
 def reduce_tensor(tensor, n_gpus):
     rt = tensor.clone()
@@ -144,6 +147,7 @@ def validate(model, criterion, valset, iteration, batch_size, n_gpus,
     if rank == 0:
         print("Validation loss {}: {:9f}  ".format(iteration, val_loss))
         logger.log_validation(val_loss, model, y, y_pred, iteration)
+    return val_loss
 
 
 def train(output_directory, log_directory, checkpoint_path, warm_start, n_gpus,
@@ -243,7 +247,7 @@ def train(output_directory, log_directory, checkpoint_path, warm_start, n_gpus,
                     reduced_loss, grad_norm, learning_rate, duration, iteration)
 
             if not is_overflow and (iteration % hparams.iters_per_checkpoint == 0):
-                validate(model, criterion, valset, iteration,
+                avg_vloss = validate(model, criterion, valset, iteration,
                          hparams.batch_size, n_gpus, collate_fn, logger,
                          hparams.distributed_run, rank)
                 if rank == 0:
@@ -251,6 +255,10 @@ def train(output_directory, log_directory, checkpoint_path, warm_start, n_gpus,
                         output_directory, "checkpoint_{}".format(iteration))
                     save_checkpoint(model, optimizer, learning_rate, iteration,
                                     checkpoint_path)
+            
+            writer.add_scalars('Training vs. Validation Loss',
+                            { 'Training' : reduced_loss, 'Validation' : avg_vloss },
+                            epoch * len(train_loader) + i)
 
             iteration += 1
 
