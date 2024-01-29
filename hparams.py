@@ -1,3 +1,4 @@
+from text import symbols
 class AttrDict(dict):
     def __init__(self, *args, **kwargs):
         super(AttrDict, self).__init__(*args, **kwargs)
@@ -11,7 +12,7 @@ def create_hparams(hparams_string=None, verbose=False):
         ################################
         # Experiment Parameters        #
         ################################
-        "epochs":1500,
+        "epochs":500,
         "iters_per_checkpoint":500,
         "seed":1234,
         "dynamic_loss_scaling":True,
@@ -33,7 +34,7 @@ def create_hparams(hparams_string=None, verbose=False):
         "training_files":'filelists/train.txt',
         "validation_files":'filelists/test.txt',
 
-        "text_cleaners":['english_cleaners'],
+        "text_cleaners":['transliteration_cleaners'],
 
         ################################
         # Audio Parameters             #
@@ -50,7 +51,7 @@ def create_hparams(hparams_string=None, verbose=False):
         ################################
         # Model Parameters             #
         ################################
-        "n_symbols": 313,
+        "n_symbols": len(symbols),
         "symbols_embedding_dim":512,
         "alignloss": "L2",
         "attention": "StepwiseMonotonicAttention",
@@ -65,7 +66,7 @@ def create_hparams(hparams_string=None, verbose=False):
         "decoder_rnn_dim":1024,
         "prenet_dim":256,
         "max_decoder_steps":1000,
-        "gate_threshold":0.001,
+        "gate_threshold":0.5,
         "p_attention_dropout":0.1,
         "p_decoder_dropout":0.1,
 
