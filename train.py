@@ -18,7 +18,7 @@ from hparams import create_hparams
 
 from torch.utils.tensorboard import SummaryWriter
 
-writer = SummaryWriter("/content/drive/MyDrive/test_run")
+writer = SummaryWriter("/kaggle/working/test_run")
 
 def reduce_tensor(tensor, n_gpus):
     rt = tensor.clone()
